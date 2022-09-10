@@ -11,8 +11,9 @@
       <mat-form-field style="width:50%" appearance="fill">
         <mat-label>Enter Blog Description </mat-label>
         <!-- <input type="text" formControlName="description" matInput matAutosizeMinRows=5 matAutosizeMaxRows=20> -->
-        <textarea matInput  formControlName="description" placeholder="Description" style="line-height: 70px !important;white-space: pre-wrap;
-        "></textarea>
+        <textarea matInput  formControlName="description" placeholder="Description"  cdkTextareaAutosize
+        cdkAutosizeMinRows="2"
+        cdkAutosizeMaxRows="5"></textarea>
         <mat-error *ngIf="description.invalid && description.errors">Please enter a valid description</mat-error>
       </mat-form-field>
     </div>
