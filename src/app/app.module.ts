@@ -17,9 +17,10 @@ import { PostsComponent } from './posts/posts.component';
 import { PostComponent } from './post/post.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from "@angular/material/card";
+import { EditpostComponent } from './editpost/editpost.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, PostsComponent, PostComponent],
+  declarations: [AppComponent, HeaderComponent, PostsComponent, PostComponent, EditpostComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

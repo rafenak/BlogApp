@@ -1,0 +1,35 @@
+<div fxLayout="column" fxLayoutAlign="center" style="margin-top:100px">
+  <form [formGroup]="eidtForm" (submit)="editBlog(eidtForm.value);">
+    <div fxLayoutAlign="center">
+      <mat-form-field style="width:50%" appearance="fill">
+        <mat-label>Enter Blog Title</mat-label>
+        <input type="text" formControlName="title" matInput>
+        <mat-error *ngIf="title.errors  && title.invalid">Please enter a valid title</mat-error>
+      </mat-form-field>
+    </div>
+    <div fxLayoutAlign="center" style="margin-top:10px">
+      <mat-form-field style="width:50%" appearance="fill">
+        <mat-label>Enter Blog Description </mat-label>
+        <!-- <input type="text" formControlName="description" matInput matAutosizeMinRows=5 matAutosizeMaxRows=20> -->
+        <textarea matInput  formControlName="description" placeholder="Description"  cdkTextareaAutosize
+        cdkAutosizeMinRows="2"
+        cdkAutosizeMaxRows="5"></textarea>
+        <mat-error *ngIf="description.invalid && description.errors">Please enter a valid description</mat-error>
+      </mat-form-field>
+    </div>
+    <div fxLayoutAlign="center" style="margin-top:10px">
+    <mat-form-field appearance="fill">
+      <mat-label>Category</mat-label>
+      <select matNativeControl required formControlName="category">
+        <option value="Personal">Personal</option>
+        <option value="Travel">Travel</option>
+        <option value="Technology">Technology</option>
+        <option value="Lifestyle">Lifestyle</option>
+      </select>
+    </mat-form-field>
+  </div>
+    <div fxLayoutAlign="center" style="margin-top:20px">
+      <button [disabled]="!eidtForm.valid" type="submit" mat-raised-button color="primary">Create</button>
+    </div>
+  </form>
+</div>
