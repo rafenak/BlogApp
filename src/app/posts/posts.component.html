@@ -14,10 +14,12 @@
        {{blog.description}}
     </p>
   </mat-card-content>
-  <div mat-line>{{blog.createAt | date:'medium' }}</div>
+    <mat-card-subtitle>
+          {{blog.createAt | date:'medium' }}
+      </mat-card-subtitle>
   <mat-card-actions>
-      <button mat-raised-button color="primary" routerLink="/edit">Edit</button>
-      <button mat-raised-button color="warn">Delete</button>
+      <button mat-raised-button color="primary" (click)="editBlog(blog)">Edit</button>
+      <button mat-raised-button color="warn" (click)="deleteBlog(blog)">Delete</button>
   </mat-card-actions>
   </mat-card>
   </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Blog } from '../model/Blog';
 import { BlogService } from '../services/blog.service';
 
@@ -10,7 +11,7 @@ import { BlogService } from '../services/blog.service';
 export class PostsComponent implements OnInit {
   blogs: Blog[] = [];
   sortedBlogs: Blog[]=[]
-  constructor(private blogservice: BlogService) {
+  constructor(private blogservice: BlogService, private router:Router) {
     // this.blogs={
     //   title:"",description:"",category:"",createAt:this.d
     // }
@@ -33,5 +34,25 @@ export class PostsComponent implements OnInit {
     return blog.sort((a: any, b: any) => {
       return <any>new Date(b.createAt) - <any>new Date(a.createAt);
     });
+  }
+
+  deleteBlog(blog: Blog) {
+    console.log(blog);
+    this.blogservice.deleteBlog(blog.id).subscribe(
+      (data) => {
+        this.blogservice.getAllBlogs();
+      },
+      (error) => console.log(error.message),
+      () => {
+        this.router.navigate(['view']).then(() => {
+          window.location.reload();
+        });
+      }
+    );
+  }
+
+  editBlog(blog:Blog){
+    console.log(blog);
+    this.router.navigate(['edit',blog.id])
   }
 }
